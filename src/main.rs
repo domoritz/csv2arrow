@@ -47,13 +47,6 @@ fn main() -> Result<(), ArrowError> {
 
     let mut input = File::open(opts.input)?;
 
-    /*let mut builder = ReaderBuilder::new()
-        .has_header(opts.header.unwrap_or(true))
-        .with_delimiter(opts.delimiter as u8);
-    builder = builder.infer_schema(opts.max_read_records);
-
-    let reader = builder.build(input)?;*/
-
     let schema = match opts.schema_file {
         Some(schema_def_file_path) => {
             let schema_file = match File::open(&schema_def_file_path) {
